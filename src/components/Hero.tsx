@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const tags = [
   { label: "Full-Stack Developer", accent: true },
   { label: "AI Integrator", accent: false },
-  { label: "Cybersecurity Enthusiast", accent: false },
+  { label: "Problem Solver", accent: false },
 ];
 
 export default function Hero() {
@@ -55,7 +55,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full overflow-visible select-none pb-16 sm:pb-20 md:pb-24"
+          className="relative w-full overflow-visible select-none pb-12 sm:pb-14 md:pb-16"
         >
           {/* ── Massive Main Text ── */}
           <h1
@@ -92,16 +92,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="mt-14 flex flex-wrap gap-4 justify-center"
+          className="mt-10 flex flex-wrap gap-4 justify-center"
         >
           {tags.map((tag) => (
             <span
               key={tag.label}
-              className={`rounded-full px-6 py-2.5 text-base font-medium transition-all ${
-                tag.accent
+              className={`rounded-full px-6 py-2.5 text-base font-medium transition-all ${tag.accent
                   ? "border border-neon-pink text-neon-pink bg-neon-pink/10 shadow-[0_0_20px_rgba(236,101,141,0.15)] hover:bg-neon-pink/20 hover:shadow-[0_0_28px_rgba(236,101,141,0.25)]"
                   : "border border-gray-600 text-gray-400 bg-transparent hover:border-gray-500 hover:text-gray-300"
-              }`}
+                }`}
             >
               {tag.label}
             </span>
@@ -115,9 +114,7 @@ export default function Hero() {
           transition={{ delay: 0.55, duration: 0.8 }}
           className="mt-8 max-w-xl text-lg text-gray-400 leading-relaxed text-center"
         >
-          I design and build thoughtful digital experiences — from AI-powered
-          applications to secure, scalable systems. Passionate about pushing the
-          boundaries of what&apos;s possible on the web.
+          I build modern web apps with clean design and smart functionality. Focused on full-stack development and AI integration, I turn ideas into real, useful products.
         </motion.p>
 
         {/* CTA Buttons */}
