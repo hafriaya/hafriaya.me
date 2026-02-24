@@ -11,7 +11,7 @@
   --color-neon-glow: rgba(236, 101, 141, 0.35);
 
   /* Paper section palette */
-  --color-paper-bg: #f4f4f4;
+  --color-paper-bg: #ebedec;
   --color-paper-text: #1a1a1a;
   --color-paper-muted: #6b6b6b;
   --color-paper-accent: #ec658d;
@@ -96,17 +96,17 @@ body {
   height: 6px;
   background: linear-gradient(
     90deg,
-    #f4f4f4 0%,
+    #ebedec 0%,
     transparent 15%,
-    #f4f4f4 20%,
+    #ebedec 20%,
     transparent 35%,
-    #f4f4f4 45%,
+    #ebedec 45%,
     transparent 55%,
-    #f4f4f4 60%,
+    #ebedec 60%,
     transparent 75%,
-    #f4f4f4 85%,
+    #ebedec 85%,
     transparent 95%,
-    #f4f4f4 100%
+    #ebedec 100%
   );
 }
 
