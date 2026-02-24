@@ -1,40 +1,21 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import ProjectCard from "./ProjectCard";
+import { projects } from "@/data/projects";
 
-const projects = [
-  {
-    title: "Moraja3aAI",
-    description:
-      "A Next.js & Supabase application leveraging the Gemini API to generate practice exams and flashcards — making studying smarter with AI-driven content creation.",
-    tags: ["Next.js", "Supabase", "Gemini API", "AI", "TypeScript"],
-    color: "#ec658d",
-    icon: "🧠",
-  },
-  {
-    title: "Kids Story App",
-    description:
-      "A Next.js application featuring animated face-swapping and AI-driven story generation — turning children's photos into personalized, magical storybooks.",
-    tags: ["Next.js", "AI", "Face Swap", "Animation", "React"],
-    color: "#7c5cf7",
-    icon: "📖",
-  },
-  {
-    title: "Guelya Time",
-    description:
-      "A desktop film recommendation engine built with JavaFX and a Neo4j graph database — exploring movie relationships through an intuitive graph-based interface.",
-    tags: ["JavaFX", "Neo4j", "Graph DB", "Desktop", "Java"],
-    color: "#3ecf8e",
-    icon: "🎬",
-  },
-];
+const featuredProjects = projects.filter((p) => p.featured);
+const otherProjects = projects.filter((p) => !p.featured);
 
 export default function Projects() {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <section id="projects" className="relative bg-dark-bg py-24 sm:py-32">
-      {/* Section header */}
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        {/* Section header */}
         <AnimatedSection>
           <div className="flex items-center gap-4 mb-4">
             <div className="h-[1px] w-12 bg-neon-pink" />
@@ -46,22 +27,67 @@ export default function Projects() {
             Projects
           </h2>
           <p className="mt-4 max-w-lg text-gray-400 leading-relaxed">
-            Projects that reflect my experience in full-stack development, AI integration, and building real-world applications.
+            Projects that reflect my experience in full-stack development, AI
+            integration, and building real-world applications.
           </p>
         </AnimatedSection>
 
-        {/* Asymmetric Grid */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Large card */}
-          <div className="md:col-span-7">
-            <ProjectCard {...projects[0]} delay={0.1} className="h-full" />
-          </div>
-          {/* Stacked right column */}
-          <div className="md:col-span-5 flex flex-col gap-6">
-            <ProjectCard {...projects[1]} delay={0.2} />
-            <ProjectCard {...projects[2]} delay={0.3} />
-          </div>
+        {/* Featured Projects Grid */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+          {featuredProjects.map((project, i) => (
+            <ProjectCard key={project.id} project={project} delay={0.1 * i} />
+          ))}
         </div>
+
+        {/* Other Projects (toggled) */}
+        <AnimatePresence>
+          {showMore && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {otherProjects.map((project, i) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    delay={0.1 * i}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Show More / Show Less button */}
+        {otherProjects.length > 0 && (
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={() => setShowMore(!showMore)}
+              className="group inline-flex items-center gap-2 rounded-lg border border-dark-border px-6 py-3 text-sm font-semibold text-gray-300 transition-all hover:border-neon-pink/40 hover:text-neon-pink active:scale-[0.97]"
+            >
+              {showMore ? "Show Less" : "Show More"}
+              <svg
+                className={`h-4 w-4 transition-transform duration-300 ${
+                  showMore ? "rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
