@@ -85,6 +85,16 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    id: "toora-mobile",
+    title: "TOORA Mobile",
+    description:
+      "A cross-platform electric bike rental mobile application built with React Native and Expo. Users can view available bikes on a real-time map, make reservations, and manage rentals through an intuitive mobile interface.",
+    tech: ["React Native", "Expo", "Node.js", "Express"],
+    image: "/projects/toora-mobile.png",
+    url: "https://github.com/hafriaya/toora",
+    featured: false
+  },
+  {
     id: "bookify",
     title: "Bookify",
     description:
