@@ -46,7 +46,7 @@ export default function Projects() {
             Projects
           </h2>
           <p className="mt-4 max-w-lg text-gray-400 leading-relaxed">
-            These projects reflect my journey as a developer — exploring full-stack architecture, integrating AI, and building applications designed to solve real problems and improve everyday experiences.
+            Projects that reflect my experience in full-stack development, AI integration, and building real-world applications.
           </p>
         </AnimatedSection>
 
