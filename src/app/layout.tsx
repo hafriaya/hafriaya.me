@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   title: "Hafri Aya - Developer",
   description:
     "Interactive developer portfolio showcasing full-stack and AI projects.",
+  icons: {
+    icon: "/my_pic.png",
+    apple: "/my_pic.png",
+  },
 };
 
 export default function RootLayout({
