@@ -47,7 +47,7 @@ export default function Contact() {
                 Find me elsewhere
               </p>
               <a
-                href="https://github.com"
+                href="https://github.com/hafriaya"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 text-sm text-paper-text hover:text-paper-accent transition-colors"
@@ -73,7 +73,7 @@ export default function Contact() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/hafriaya"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 text-sm text-paper-text hover:text-paper-accent transition-colors"
@@ -196,7 +196,7 @@ export default function Contact() {
         {/* Footer */}
         <div className="mt-24 border-t border-paper-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-mono text-[11px] text-paper-muted tracking-wide">
-            © {new Date().getFullYear()} — Designed &amp; Built with intention.
+            © {new Date().getFullYear()} — Aya Hafri — Designed & Built with care.
           </p>
           <div className="flex items-center gap-6">
             <a
