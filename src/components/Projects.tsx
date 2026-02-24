@@ -24,6 +24,10 @@ export default function Projects() {
 
   const handleShowLess = () => {
     setVisibleCount(0);
+    // Scroll back to the top of the Projects section so the user doesn't land on a random section
+    setTimeout(() => {
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   return (
