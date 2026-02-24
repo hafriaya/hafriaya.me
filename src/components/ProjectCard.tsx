@@ -16,6 +16,7 @@ export default function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      className="h-full"
     >
       <div className="project-card group relative overflow-hidden rounded-2xl border border-dark-border bg-dark-surface/60 backdrop-blur-sm transition-all duration-500 hover:border-neon-pink/30 hover:neon-border-glow h-full flex flex-col">
         {/* Screenshot */}
