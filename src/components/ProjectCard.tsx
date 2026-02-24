@@ -26,6 +26,8 @@ export default function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
             fill
             className="object-cover project-image transition-transform duration-600"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            unoptimized
+            priority={project.featured}
           />
 
           {/* Hover overlay */}
