@@ -55,7 +55,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full overflow-visible select-none pb-12 sm:pb-14 md:pb-16"
+          className="relative w-full overflow-visible select-none pb-16 sm:pb-18 md:pb-20"
         >
           {/* ── Massive Main Text ── */}
           <h1
@@ -92,7 +92,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="mt-10 flex flex-wrap gap-4 justify-center"
+          className="mt-14 flex flex-wrap gap-4 justify-center"
         >
           {tags.map((tag) => (
             <span
