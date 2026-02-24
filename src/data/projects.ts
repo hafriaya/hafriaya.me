@@ -18,7 +18,7 @@ export const projects: Project[] = [
     description:
       "A reading platform built with Next.js and Firebase that allows teachers to manage students, assign stories, and track reading progress through a responsive dashboard.",
     tech: ["Next.js", "Firebase", "PWA", "Tailwind"],
-    image: "/projects/hikaya.svg",
+    image: "/projects/hikaya.png",
     url: "https://github.com/hafriaya/hikaya",
     featured: true,
   },
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     description:
       "An AI-powered study platform that generates practice exams and flashcards using Gemini API, helping students revise more efficiently.",
     tech: ["Next.js", "Supabase", "Gemini API", "TypeScript"],
-    image: "/projects/moraja3aai.svg",
+    image: "/projects/moraja3aai.png",
     url: "https://github.com/hafriaya/Moraja3aAI",
     featured: true,
   },
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     description:
       "A smart electric bike rental mobile app built with React Native and Expo, featuring real-time availability and modern mobile UI.",
     tech: ["React Native", "Expo", "TypeScript", "Node.js"],
-    image: "/projects/toora.svg",
+    image: "/projects/toora.png",
     url: "https://github.com/hafriaya/toora",
     featured: true,
   },
