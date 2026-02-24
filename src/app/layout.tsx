@@ -25,9 +25,9 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — Full-Stack Developer | AI Integrator | Cybersecurity",
+  title: "Hafri Aya - Developer",
   description:
-    "Interactive developer portfolio showcasing full-stack, AI, and cybersecurity projects.",
+    "Interactive developer portfolio showcasing full-stack and AI projects.",
 };
 
 export default function RootLayout({
