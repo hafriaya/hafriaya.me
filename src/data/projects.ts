@@ -39,7 +39,7 @@ export const projects: Project[] = [
       "A smart electric bike rental mobile app built with React Native and Expo, featuring real-time availability and modern mobile UI.",
     tech: ["React.js", "Laravel", "MySQL"],
     image: "/projects/toora.png",
-    url: "https://github.com/hafriaya/toora",
+    url: "https://github.com/Badreddine-Chourane/toora",
     featured: true,
   },
   {
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     id: "appel-moi",
     title: "Appel Moi",
     description:
-      "A comprehensive contact management web application built with ASP.NET Core that allows users to manage contacts with photos, generate QR codes for easy sharing, import/export CSV files, and purchase premium features through an integrated shop.",
+      "A contact management web app built with ASP.NET Core featuring photos, QR sharing, and CSV import/export.",
     tech: ["ASP.NET Core", "Entity Framework", "SQLite", "QR Code", "MVC"],
     image: "/projects/appel-moi.png",
     url: "https://github.com/hafriaya/appel_moi",
@@ -71,27 +71,27 @@ export const projects: Project[] = [
       "A Django web app that suggests recipes based on ingredients available in your fridge.",
     tech: ["Django", "Python"],
     image: "/projects/foodma.png",
-    url: "https://github.com/hafriaya/Recettes_project",
+    url: "https://github.com/hafriaya/Food.ma",
     featured: false,
   },
   {
     id: "sitbib",
-    title: "SitBib",
+    title: "siTbib",
     description:
       "A medical appointment booking web app built with React, allowing users to schedule and manage doctor visits.",
     tech: ["React", "JavaScript"],
     image: "/projects/siTbib.png",
-    url: "https://github.com/hafriaya/doctor_appointment",
+    url: "https://github.com/hafriaya/siTbib",
     featured: false,
   },
   {
     id: "toora-mobile",
     title: "TOORA Mobile",
     description:
-      "A cross-platform electric bike rental mobile application built with React Native and Expo. Users can view available bikes on a real-time map, make reservations, and manage rentals through an intuitive mobile interface.",
+      "A React Native bike rental app allowing users to locate, reserve, and manage rentals in real time.",
     tech: ["React Native", "Expo", "Node.js", "Express"],
     image: "/projects/toora-mobile.png",
-    url: "https://github.com/hafriaya/toora",
+    url: "https://github.com/ChouraneBD/toora-mobile",
     featured: false
   },
   {
@@ -111,7 +111,7 @@ export const projects: Project[] = [
       "An e-commerce watches website with a customized WordPress back-office for product and order management.",
     tech: ["WordPress", "HTML", "CSS", "JavaScript", "PHP"],
     image: "/projects/wp_watches.png",
-    url: "https://github.com/hafriaya/watches",
+    url: "https://github.com/hafriaya/WP_watch",
     featured: false,
   },
   {
@@ -121,7 +121,7 @@ export const projects: Project[] = [
       "A shoes e-commerce website with an attractive user interface and dynamic product management.",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     image: "/projects/sberdilty.png",
-    url: "https://github.com/hafriaya/sberdilty",
+    url: "https://github.com/hafriaya/Sberdilty",
     featured: false,
   },
   {
@@ -131,7 +131,7 @@ export const projects: Project[] = [
       "A car rental platform with dynamic database integration, allowing users to browse and reserve vehicles easily.",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     image: "/projects/kricar.png",
-    url: "https://github.com/hafriaya/kricar-v2",
+    url: "https://github.com/hafriaya/kriCar-v2",
     featured: false,
   },
 ];
