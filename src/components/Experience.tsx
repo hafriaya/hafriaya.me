@@ -1,25 +1,7 @@
 "use client";
 
 import AnimatedSection from "./AnimatedSection";
-
-const communityItems = [
-  {
-    role: "Speaker & Workshop Lead",
-    org: "Google Developer Group (GDG)",
-    date: "2024",
-    description:
-      "Led hands-on technical workshops on AI integration and modern web development for the local developer community.",
-    accent: true,
-  },
-  {
-    role: "Ambassadress",
-    org: "ANDD — 11th EMSI Enterprise Forum",
-    date: "2024",
-    description:
-      "Represented the Association Nationale du Développement Digital, bridging the gap between digital innovation and enterprise strategy.",
-    accent: false,
-  },
-];
+import { experiences } from "@/data/experiences";
 
 const learningTopics = [
   { label: "K-means Clustering", area: "Machine Learning" },
@@ -60,32 +42,30 @@ export default function Experience() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Left column — community involvement */}
           <div className="lg:col-span-7 space-y-8">
-            {communityItems.map((item, i) => (
+            {experiences.map((exp, i) => (
               <AnimatedSection
-                key={item.role}
+                key={`${exp.role}-${exp.organization}`}
                 delay={0.1 * i}
                 direction={i % 2 === 0 ? "left" : "right"}
               >
                 <div
-                  className={`relative p-6 sm:p-8 ${
-                    item.accent
-                      ? "bg-white border-l-4 border-paper-accent shadow-[4px_4px_0px_0px_rgba(236,101,141,0.2)]"
-                      : "bg-white/60 border border-paper-border"
-                  } ${i === 1 ? "sm:ml-12 lg:ml-20" : ""}`}
+                  className={`relative p-6 sm:p-8 bg-white border-l-4 border-paper-accent shadow-[4px_4px_0px_0px_rgba(236,101,141,0.2)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(236,101,141,0.3)] hover:border-l-[6px] ${
+                    i % 2 !== 0 ? "sm:ml-12 lg:ml-20" : ""
+                  }`}
                 >
                   {/* Date stamp */}
                   <span className="absolute -top-3 right-6 bg-paper-bg px-3 py-0.5 font-mono text-[11px] text-paper-muted border border-paper-border">
-                    {item.date}
+                    {exp.period}
                   </span>
 
                   <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-paper-accent font-bold">
-                    {item.org}
+                    {exp.organization}
                   </span>
                   <h3 className="mt-2 text-2xl sm:text-3xl font-black uppercase tracking-tight">
-                    {item.role}
+                    {exp.role}
                   </h3>
                   <p className="mt-3 text-sm text-paper-muted leading-relaxed">
-                    {item.description}
+                    {exp.description}
                   </p>
                 </div>
               </AnimatedSection>
