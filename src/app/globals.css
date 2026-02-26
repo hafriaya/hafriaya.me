@@ -139,6 +139,29 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+/* ── Marquee / infinite slide animation ── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* ── Hidden scrollbar utility ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── Form focus ring ── */
 input:focus,
 textarea:focus {
