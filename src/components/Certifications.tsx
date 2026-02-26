@@ -36,7 +36,7 @@ export default function Certifications() {
           <div className="pointer-events-none absolute right-0 -top-6 -bottom-6 w-16 sm:w-24 bg-gradient-to-l from-dark-bg to-transparent z-10" />
 
           {/* Sliding track — top padding for tooltip above */}
-          <div className="flex w-max animate-marquee hover:[animation-play-state:paused] pt-20">
+          <div className="flex w-max animate-marquee hover:[animation-play-state:paused] pt-14">
             {duplicated.map((cert, i) => (
               <motion.a
                 key={`${cert.name}-${i}`}
