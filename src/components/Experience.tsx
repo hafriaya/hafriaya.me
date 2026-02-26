@@ -3,11 +3,34 @@
 import AnimatedSection from "./AnimatedSection";
 import { experiences } from "@/data/experiences";
 
-const learningTopics = [
-  { label: "K-means Clustering", area: "Machine Learning" },
-  { label: "Data Smoothing", area: "Machine Learning" },
-  { label: "VMware / ESXi", area: "Infrastructure" },
-  { label: "Network Architecture", area: "Cybersecurity" },
+const currentlyExploring = [
+  "AI integration in web applications",
+  "Advanced Next.js patterns",
+  "Application security",
+  "System design fundamentals",
+];
+
+const skillGroups = [
+  {
+    category: "Frontend",
+    skills: ["Next.js", "React.js", "React Native", "Tailwind CSS"],
+  },
+  {
+    category: "Backend",
+    skills: ["Node.js", "Laravel", "Django", "Symfony", "PHP", "ASP.NET"],
+  },
+  {
+    category: "Languages",
+    skills: ["JavaScript", "TypeScript", "Java", "Python", "C++"],
+  },
+  {
+    category: "Databases",
+    skills: ["MySQL", "MongoDB", "Supabase", "Firebase", "Neo4j"],
+  },
+  {
+    category: "Tools",
+    skills: ["Git", "GitHub", "Figma", "WordPress", "JavaFX"],
+  },
 ];
 
 export default function Experience() {
@@ -72,39 +95,55 @@ export default function Experience() {
             ))}
           </div>
 
-          {/* Right column — Continuous Learning */}
+          {/* Right column — Currently Exploring + Skills */}
           <div className="lg:col-span-5">
             <AnimatedSection delay={0.15} direction="right">
               <div className="lg:sticky lg:top-24">
-                {/* "Stamp" style header */}
+                {/* Currently Exploring */}
                 <div className="inline-block border-2 border-paper-text px-4 py-2 -rotate-2 mb-8">
                   <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold">
-                    Continuous Learning
+                    Currently Exploring
                   </span>
                 </div>
 
-                <div className="space-y-4">
-                  {learningTopics.map((topic) => (
-                    <div key={topic.label} className="flex items-start gap-4 group">
+                <div className="space-y-3">
+                  {currentlyExploring.map((item) => (
+                    <div key={item} className="flex items-start gap-4 group">
                       <div className="mt-1 h-3 w-3 rounded-full border-2 border-paper-accent bg-transparent group-hover:bg-paper-accent transition-colors shrink-0" />
-                      <div>
-                        <p className="font-bold text-sm uppercase tracking-wide">
-                          {topic.label}
-                        </p>
-                        <p className="font-mono text-[10px] text-paper-muted uppercase tracking-[0.15em]">
-                          {topic.area}
-                        </p>
-                      </div>
+                      <p className="font-bold text-sm uppercase tracking-wide">
+                        {item}
+                      </p>
                     </div>
                   ))}
                 </div>
 
-                {/* Decorative pull-quote */}
-                <div className="mt-12 border-t border-paper-border pt-6">
-                  <blockquote className="text-lg italic text-paper-muted leading-relaxed">
-                    &ldquo;The best way to learn is to build, break, and share
-                    what you discover.&rdquo;
-                  </blockquote>
+                {/* Skills */}
+                <div className="mt-12 border-t border-paper-border pt-8">
+                  <div className="inline-block border-2 border-paper-text px-4 py-2 rotate-1 mb-8">
+                    <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold">
+                      Tech Stack
+                    </span>
+                  </div>
+
+                  <div className="space-y-5">
+                    {skillGroups.map((group) => (
+                      <div key={group.category}>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-paper-accent font-bold mb-2">
+                          {group.category}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {group.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="rounded-sm bg-white px-2.5 py-1 text-[11px] font-mono text-paper-text border border-paper-border hover:border-paper-accent hover:text-paper-accent transition-colors duration-200"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </AnimatedSection>
