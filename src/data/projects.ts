@@ -13,13 +13,33 @@ export type Project = {
 export const projects: Project[] = [
   // FEATURED PROJECTS (VISIBLE FIRST)
   {
-    id: "hikaya",
-    title: "Hikaya",
+    id: "driveops",
+    title: "DriveOps",
     description:
-      "A reading platform built with Next.js and Firebase that allows teachers to manage students, assign stories, and track reading progress through a responsive dashboard.",
-    tech: ["Next.js", "Firebase", "PWA", "Tailwind"],
-    image: "/projects/hikaya.png",
-    url: "https://github.com/hafriaya/hikaya",
+      "A vehicle monitoring platform for telemetry processing, anomaly detection, and real-time alerts.",
+    tech: ["Spring Boot", "Kafka", "PostgreSQL", "Next.js"],
+    image: "/projects/driveOps.png",
+    url: "",
+    featured: true,
+  },
+  {
+    id: "linkedin-cv-generator",
+    title: "LinkedIn CV Generator",
+    description:
+      "A multi-agent system that analyzes LinkedIn profiles and job offers to generate tailored CVs.",
+    tech: ["Google ADK", "Python"],
+    image: "/projects/linkedin-cv-generator.png",
+    url: "https://github.com/hafriaya/workshop-linkedin-cv-agent",
+    featured: true,
+  },
+  {
+    id: "ishara",
+    title: "IsharaApp",
+    description:
+      "Real-time sign language recognition using the device camera and on-device machine learning.",
+    tech: ["Java", "TensorFlow Lite", "Android"],
+    image: "/projects/ishara.jpg",
+    url: "https://github.com/hafriaya/detectorAI_signLanguage",
     featured: true,
   },
   {
@@ -33,6 +53,36 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "riwaya",
+    title: "Riwaya",
+    description:
+      "An AI-powered face-swapping app for personalized children's stories.",
+    tech: ["Next.js", "Firebase", "Tailwind"],
+    image: "/projects/riwayaKids.png",
+    url: "",
+    featured: true,
+  },
+  {
+    id: "ai-customer-support",
+    title: "AI Customer Support",
+    description:
+      "A Spring Boot storefront with a floating support chat and an agent inbox for human replies and takeover.",
+    tech: ["Spring Boot", "Java"],
+    image: "",
+    url: "https://github.com/ChouraneBD/Ai_customer_support",
+    featured: true,
+  },
+  {
+    id: "hikaya",
+    title: "Hikaya",
+    description:
+      "A reading platform built with Next.js and Firebase that allows teachers to manage students, assign stories, and track reading progress through a responsive dashboard.",
+    tech: ["Next.js", "Firebase", "PWA", "Tailwind"],
+    image: "/projects/hikaya.png",
+    url: "https://github.com/hafriaya/hikaya",
+    featured: true,
+  },
+  {
     id: "toora",
     title: "TOORA",
     description:
@@ -43,6 +93,28 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "toora-mobile",
+    title: "TOORA Mobile",
+    description:
+      "A React Native bike rental app allowing users to locate, reserve, and manage rentals in real time.",
+    tech: ["React Native", "Expo", "Node.js", "Express"],
+    image: "/projects/toora-mobile.png",
+    url: "https://github.com/ChouraneBD/toora-mobile",
+    featured: false,
+  },
+
+  // OTHER PROJECTS (VISIBLE AFTER CLICKING "SHOW MORE")
+  {
+    id: "factora",
+    title: "Factora",
+    description:
+      "A billing web app for managing clients, invoices, and articles, with role-based access and PDF export.",
+    tech: ["React", "Express", "PostgreSQL", "JWT"],
+    image: "",
+    url: "https://github.com/ChouraneBD/facturation-platform",
+    featured: false,
+  },
+  {
     id: "guelya-time",
     title: "Guelya Time",
     description:
@@ -50,10 +122,8 @@ export const projects: Project[] = [
     tech: ["JavaFX", "Neo4j", "Graph Database", "Java"],
     image: "/projects/guelya-time.png",
     url: "https://github.com/hafriaya/Guelya_time",
-    featured: true,
+    featured: false,
   },
-
-  // OTHER PROJECTS (VISIBLE AFTER CLICKING "SHOW MORE")
   {
     id: "appel-moi",
     title: "Appel Moi",
@@ -83,16 +153,6 @@ export const projects: Project[] = [
     image: "/projects/siTbib.png",
     url: "https://github.com/hafriaya/siTbib",
     featured: false,
-  },
-  {
-    id: "toora-mobile",
-    title: "TOORA Mobile",
-    description:
-      "A React Native bike rental app allowing users to locate, reserve, and manage rentals in real time.",
-    tech: ["React Native", "Expo", "Node.js", "Express"],
-    image: "/projects/toora-mobile.png",
-    url: "https://github.com/ChouraneBD/toora-mobile",
-    featured: false
   },
   {
     id: "bookify",

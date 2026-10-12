@@ -6,25 +6,33 @@ import AnimatedSection from "./AnimatedSection";
 import ProjectCard from "./ProjectCard";
 import { projects } from "@/data/projects";
 
-const featuredProjects = projects.filter((p) => p.featured);
-const otherProjects = projects.filter((p) => !p.featured);
+const INITIAL_BIG = 4;
+const BIG_ROW = 2;
+const SMALL_ROW = 3;
 
-const BATCH_SIZE = 3;
+const bigProjects = projects.filter((p) => p.featured).slice(0, 8);
+const smallProjects = projects.filter((p) => !bigProjects.some((big) => big.id === p.id));
 
 export default function Projects() {
-  const [visibleCount, setVisibleCount] = useState(0);
+  const [visibleBig, setVisibleBig] = useState(INITIAL_BIG);
+  const [visibleSmall, setVisibleSmall] = useState(0);
 
-  const visibleOthers = otherProjects.slice(0, visibleCount);
-  const hasMoreToShow = visibleCount < otherProjects.length;
-  const isExpanded = visibleCount > 0;
+  const visibleBigProjects = bigProjects.slice(0, visibleBig);
+  const visibleSmallProjects = smallProjects.slice(0, visibleSmall);
+  const canShowMore = visibleBig < bigProjects.length || visibleSmall < smallProjects.length;
+  const canShowLess = visibleBig > INITIAL_BIG || visibleSmall > 0;
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, otherProjects.length));
+    if (visibleBig < bigProjects.length) {
+      setVisibleBig((count) => Math.min(count + BIG_ROW, bigProjects.length));
+      return;
+    }
+    setVisibleSmall((count) => Math.min(count + SMALL_ROW, smallProjects.length));
   };
 
   const handleShowLess = () => {
-    setVisibleCount(0);
-    // Scroll back to the top of the Projects section so the user doesn't land on a random section
+    setVisibleBig(INITIAL_BIG);
+    setVisibleSmall(0);
     setTimeout(() => {
       document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
@@ -33,7 +41,6 @@ export default function Projects() {
   return (
     <section id="projects" className="relative bg-dark-bg py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Section header */}
         <AnimatedSection>
           <div className="flex items-center gap-4 mb-4">
             <div className="h-[1px] w-12 bg-neon-pink" />
@@ -50,51 +57,53 @@ export default function Projects() {
           </p>
         </AnimatedSection>
 
-        {/* Featured Projects Grid */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-          {featuredProjects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} delay={0.1 * i} />
-          ))}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <AnimatePresence initial={false}>
+            {visibleBigProjects.map((project, i) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.08 * (i % BIG_ROW),
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="h-full"
+              >
+                <ProjectCard project={project} delay={0} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
-        {/* Other Projects (revealed in batches) */}
-        <AnimatePresence>
-          {visibleOthers.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden"
-            >
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <AnimatePresence>
-                  {visibleOthers.map((project, i) => (
-                    <motion.div
-                      key={project.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{
-                        duration: 0.4,
-                        delay: 0.1 * (i % BATCH_SIZE),
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                      className="h-full"
-                    >
-                      <ProjectCard project={project} delay={0} />
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {visibleSmallProjects.length > 0 && (
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <AnimatePresence initial={false}>
+              {visibleSmallProjects.map((project, i) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.08 * (i % SMALL_ROW),
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="h-full"
+                >
+                  <ProjectCard project={project} compact delay={0} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
 
-        {/* Show More / Show Less buttons */}
-        {otherProjects.length > 0 && (
-          <div className="mt-12 flex justify-center gap-4">
-            {hasMoreToShow && (
+        {(canShowMore || canShowLess) && (
+          <div className="mt-8 flex justify-center gap-4">
+            {canShowMore && (
               <button
                 onClick={handleShowMore}
                 className="group inline-flex items-center gap-2 rounded-lg border border-dark-border px-6 py-3 text-sm font-semibold text-gray-300 transition-all hover:border-neon-pink/40 hover:text-neon-pink active:scale-[0.97]"
@@ -115,7 +124,7 @@ export default function Projects() {
                 </svg>
               </button>
             )}
-            {isExpanded && (
+            {canShowLess && (
               <button
                 onClick={handleShowLess}
                 className="group inline-flex items-center gap-2 rounded-lg border border-dark-border px-6 py-3 text-sm font-semibold text-gray-300 transition-all hover:border-neon-pink/40 hover:text-neon-pink active:scale-[0.97]"

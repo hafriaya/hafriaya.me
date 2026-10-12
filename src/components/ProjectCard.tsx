@@ -7,9 +7,13 @@ import type { Project } from "@/data/projects";
 interface ProjectCardProps {
   project: Project;
   delay?: number;
+  compact?: boolean;
 }
 
-export default function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
+export default function ProjectCard({ project, delay = 0, compact = false }: ProjectCardProps) {
+  const hasImage = Boolean(project.image);
+  const hasUrl = Boolean(project.url);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -20,36 +24,46 @@ export default function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
     >
       <div className="project-card group relative overflow-hidden rounded-2xl border border-dark-border bg-dark-surface/60 backdrop-blur-sm transition-all duration-500 hover:border-neon-pink/30 hover:neon-border-glow h-full flex flex-col">
         {/* Screenshot */}
-        <div className="relative h-52 sm:h-60 overflow-hidden bg-dark-bg">
-          <Image
-            src={project.image}
-            alt={`${project.title} screenshot`}
-            fill
-            className="object-cover project-image transition-transform duration-600"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            unoptimized
-            priority={project.featured}
-          />
+        <div className={`relative overflow-hidden bg-dark-bg ${compact ? "h-32 sm:h-36" : "h-52 sm:h-60"}`}>
+          {hasImage ? (
+            <Image
+              src={project.image}
+              alt={`${project.title} screenshot`}
+              fill
+              className="object-cover project-image transition-transform duration-600"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              unoptimized
+              priority={project.featured}
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-dark-bg via-dark-surface to-dark-bg">
+              <span className="px-6 text-center font-mono text-xs uppercase tracking-[0.22em] text-neon-pink/80">
+                {project.title}
+              </span>
+            </div>
+          )}
 
           {/* Hover overlay */}
-          <div className="project-overlay absolute inset-0 flex items-center justify-center bg-dark-bg/80 backdrop-blur-sm">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-neon-pink/50 px-5 py-2 text-sm font-medium text-neon-pink hover:bg-neon-pink/10 transition-colors"
-            >
-              View Project →
-            </a>
-          </div>
+          {hasUrl && (
+            <div className="project-overlay absolute inset-0 flex items-center justify-center bg-dark-bg/80 backdrop-blur-sm">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-neon-pink/50 px-5 py-2 text-sm font-medium text-neon-pink hover:bg-neon-pink/10 transition-colors"
+              >
+                View Project →
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Content */}
-        <div className="p-5 sm:p-6 flex flex-col flex-1">
-          <h3 className="text-lg font-bold text-white group-hover:text-neon-pink transition-colors duration-300">
+        <div className={`flex flex-col flex-1 ${compact ? "p-4" : "p-5 sm:p-6"}`}>
+          <h3 className={`font-bold text-white group-hover:text-neon-pink transition-colors duration-300 ${compact ? "text-base" : "text-lg"}`}>
             {project.title}
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-gray-400 flex-1">
+          <p className={`mt-2 leading-relaxed text-gray-400 flex-1 ${compact ? "text-xs line-clamp-3" : "text-sm"}`}>
             {project.description}
           </p>
 
@@ -66,27 +80,29 @@ export default function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
           </div>
 
           {/* View Project button */}
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-neon-pink hover:text-neon-pink-dim transition-colors group/link"
-          >
-            View Project
-            <svg
-              className="h-4 w-4 transition-transform group-hover/link:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
+          {hasUrl && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-neon-pink hover:text-neon-pink-dim transition-colors group/link"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
+              View Project
+              <svg
+                className="h-4 w-4 transition-transform group-hover/link:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          )}
         </div>
       </div>
     </motion.div>
