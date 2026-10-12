@@ -59,7 +59,7 @@ export const projects: Project[] = [
       "An AI-powered face-swapping app for personalized children's stories.",
     tech: ["Next.js", "Firebase", "Tailwind"],
     image: "/projects/riwayaKids.png",
-    url: "",
+    url: "https://github.com/hafriaya/RiwayaKids",
     featured: true,
   },
   {
