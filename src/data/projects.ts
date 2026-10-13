@@ -7,6 +7,7 @@ export type Project = {
   tech: string[];
   image: string;
   url: string; // GitHub repository link
+  liveUrl?: string; // Deployed app, shown beside the GitHub link
   featured: boolean;
 };
 
@@ -50,6 +51,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "Supabase", "Gemini API", "TypeScript"],
     image: "/projects/moraja3aai.png",
     url: "https://github.com/hafriaya/Moraja3aAI",
+    liveUrl: "https://moraja3aai.netlify.app",
     featured: true,
   },
   {
@@ -80,6 +82,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "Firebase", "PWA", "Tailwind"],
     image: "/projects/hikaya.png",
     url: "https://github.com/hafriaya/hikaya",
+    liveUrl: "https://hikaya-212.netlify.app",
     featured: true,
   },
   {

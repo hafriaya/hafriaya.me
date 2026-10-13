@@ -13,6 +13,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, delay = 0, compact = false }: ProjectCardProps) {
   const hasImage = Boolean(project.image);
   const hasUrl = Boolean(project.url);
+  const hasLive = Boolean(project.liveUrl);
 
   return (
     <motion.div
@@ -44,16 +45,28 @@ export default function ProjectCard({ project, delay = 0, compact = false }: Pro
           )}
 
           {/* Hover overlay */}
-          {hasUrl && (
-            <div className="project-overlay absolute inset-0 flex items-center justify-center bg-dark-bg/80 backdrop-blur-sm">
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border border-neon-pink/50 px-5 py-2 text-sm font-medium text-neon-pink hover:bg-neon-pink/10 transition-colors"
-              >
-                View Project →
-              </a>
+          {(hasUrl || hasLive) && (
+            <div className="project-overlay absolute inset-0 flex items-center justify-center gap-3 bg-dark-bg/80 backdrop-blur-sm">
+              {hasUrl && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-neon-pink/50 px-5 py-2 text-sm font-medium text-neon-pink hover:bg-neon-pink/10 transition-colors"
+                >
+                  View Project →
+                </a>
+              )}
+              {hasLive && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-white/30 px-5 py-2 text-sm font-medium text-white hover:bg-white/10 transition-colors"
+                >
+                  Live →
+                </a>
+              )}
             </div>
           )}
         </div>
@@ -79,29 +92,55 @@ export default function ProjectCard({ project, delay = 0, compact = false }: Pro
             ))}
           </div>
 
-          {/* View Project button */}
-          {hasUrl && (
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-neon-pink hover:text-neon-pink-dim transition-colors group/link"
-            >
-              View Project
-              <svg
-                className="h-4 w-4 transition-transform group-hover/link:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </a>
+          {(hasUrl || hasLive) && (
+            <div className={`flex flex-wrap items-center ${compact ? "mt-4 gap-x-4 gap-y-2" : "mt-5 gap-x-5 gap-y-2"}`}>
+              {hasUrl && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-neon-pink hover:text-neon-pink-dim transition-colors group/link"
+                >
+                  View Project
+                  <svg
+                    className="h-4 w-4 transition-transform group-hover/link:translate-x-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              )}
+              {hasLive && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors"
+                >
+                  Live
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+              )}
+            </div>
           )}
         </div>
       </div>
